@@ -6,7 +6,8 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0 text-primary" href="{{ route('home') }}">
-            <i class="fas fa-user"></i>TXENEKA-KOLA
+            <img src="{{ asset('assets/img/brand/favicon.png') }}" />
+            TXENEKA-KOLA
         </a>
 
         <!-- Collapse -->
@@ -57,7 +58,7 @@
                     <div class="collapse " id="navbar-register">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item hvr-underline-from-center">
-                                <a class="nav-link" href="javascript:void(0)">
+                                <a class="nav-link" href="{{route('client') }}">
                                     <i class="fas fa-shopping-bag"></i>
                                     Clientes
                                 </a>

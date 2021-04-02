@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Livewire\Cliente\ClientShow;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Index;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,22 +14,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Rota que eu eu escolhi para servir como principal no meu projecto
+Route::get('/', Index::class)->name('index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rota principal do projecto 
+// Route::get('/', function () {
+// 	return view('welcome');
+// });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
 
-Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
 
-Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -36,10 +43,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
-	 Route::get('map', function () {return view('pages.maps');})->name('map');
-	 Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
-	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
+	Route::get('upgrade', function () {
+		return view('pages.upgrade');
+	})->name('upgrade');
+	Route::get('map', function () {
+		return view('pages.maps');
+	})->name('map');
+	Route::get('icons', function () {
+		return view('pages.icons');
+	})->name('icons');
+	Route::get('table-list', function () {
+		return view('pages.tables');
+	})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
 
+
+	// novas rotas
+	Route::get('/client', ClientShow::class)->name('client');
+});
